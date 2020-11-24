@@ -1,7 +1,10 @@
 <?php
+include("config.php");
+session_start();
 
-// code to put profile session variable to $name:
-// $name = $_SESSION['profile'];
+// code to put profile session variable to $name
+$name = $_SESSION['name'];
+$id = $_SESSION['id'];
 
 ?>
 
@@ -11,7 +14,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php //echo $name ?>'s Profile</title>
+        <title><?php echo $name ?>'s Profile</title>
 
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
@@ -23,7 +26,7 @@
 
     <div class="container">
         <!-- for jquery to get profile info from server -->
-        <div hidden id="profile-name"><?php //echo $name ?></div>
+        <div hidden id="profile-id"><?php echo $id ?></div>
         <div class="row">
             <div class="col-sm-12">
                 <div id="header-img">
@@ -55,10 +58,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            // insert ajax function to get profile info
-            // pass profile name to function using
-            // var name = $('#profile-name').text();
-            // and send to include/fetch-profile.php
+
+            get_profile();
+            
+            // ajax function to get profile info; pass profile id to function then send to include/fetch-profile.php
+            function get_profile() {
+                var id = $('#profile-id').text();
+                $.ajax({
+                    url: 'include/fetch-profile.php',
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        id: id
+                    }, success: function(data) {
+                        // replace placeholders for each piece of profile information in the html with the data from the fetch
+                        // do this with the data passed back from the php or in the php itself (like with the datatables)
+                    }
+                })
+            }
 
         })
     </script>
