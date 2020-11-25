@@ -24,9 +24,9 @@
       <!-- Slide -->
                     <div class="home_container">
                         <div class="home_container_inner d-flex flex-column align-items-center justify-content-center">
-                            <div class="h2"><h2>A directory for everything music in Georgia</h2></div>
-                            <div class="h1"><h1>Georgia Music Business Directory</h1></div>
-                            <div class="h2"><h2>Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2></div>
+                            <h2 class="h2">A directory for everything music in Georgia</h2>
+                            <h1 class="h1">Georgia Music Business Directory</h1>
+                            <h2 class="h2">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2>
                         </div>
                     </div>
                 </div>
