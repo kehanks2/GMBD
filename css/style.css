@@ -1,3 +1,22 @@
 body {
     padding-top: 65px;
 }
+
+.landingpage {
+    background-image:url(/img/bk.jfif)
+}
+.h2{
+    -webkit-text-stroke-width: .5px;
+     -webkit-text-stroke-color: black;
+      color: white;
+}
+.h1{
+    font-size:120px;
+     -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+       color: white;
+}
+
+.container{
+    padding-top: 25px
+}

@@ -1,6 +1,7 @@
 This is the project folder.
 
-I have it set up in VS Code and git has been installed so that we can easily push changes to the repo.
+I have everything set up in VS Code including git,
+which has been installed so that we can easily push changes to the repo.
 
 ------------------------------------------------------------------------------------------------------
 
@@ -10,7 +11,7 @@ I have it set up in VS Code and git has been installed so that we can easily pus
 
 3. Then, click the checkmark at the top of the panel and type in the commit message to push the commit.
 
-4. Finally, Click the second button on the bottom blue task bar (should be to the left of main
+4. Finally, Click the second button on the bottom blue task bar (should be to the right of main
 and show ( 0 | 1 ).). 
 
 ------------------------------------------------------------------------------------------------------
