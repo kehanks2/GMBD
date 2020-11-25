@@ -20,23 +20,20 @@
                 <!-- add image with site title centered 
                     below title, add a button for each directory in a single line
                 -->
-                example:
-                    ---------------------------------------------------------------------------------------------------------------------------
-                    Ga Music Business Dir    Artist Directory    Business Directory      Venue Directory                My Account      Log Out
-                    ---------------------------------------------------------------------------------------------------------------------------
-
-
-                                                                 ____                 ____    ____
-                                                                /    \   |\      /|  |    \  |    \
-                                                                |  ____  | \    / |  |____/  |     |
-                                                                |     |  |  \  /  |  |    \  |     |
-                                                                \____/   |   \/   |  |____/  |____/
-
-                                                --------------------    --------------------    --------------------
-                                                | ARTIST DIRECTORY |    | BUSNS. DIRECTORY |    | VENUE  DIRECTORY |
-                                                --------------------    --------------------    --------------------
-
-                    ---------------------------------------------------------------------------------------------------------------------------
+                <div class="home" style="background-image:url(/src/assets/image/bk.jfif)">
+                <div class="home_slider_container">
+      <!-- Slide -->
+                <div class="owl-item">
+                    <div class="home_container">
+                        <div class="home_container_inner d-flex flex-column align-items-center justify-content-center">
+                            <div class="home_content text-center" style="padding-top: 25px" >
+                            <div class="home_subtitle"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">A directory for everything music in Georgia</h2></div>
+                            <div class="home_title"><h1 style="font-size:120px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Georgia Music Business Directory</h1></div>
+                            <div class="home_link"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
                 
             </div>
         </div>
