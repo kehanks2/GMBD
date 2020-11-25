@@ -1,9 +1,9 @@
 <?php 
 
-define('server', 'sql307.epizy.com'); // loaclhost
-define('username', 'epiz_27289279'); // root
-define('password', '0pgVJeAF1Tb'); // ''
-define('database', 'epiz_27289279_gmbd'); // musicdirectory
+define('server', 'localhost'); // localhost
+define('username', 'root'); // root
+define('password', ''); // ''
+define('database', 'musicdirectory'); // musicdirectory
 
 $db = mysqli_connect(server, username, password, database);
 

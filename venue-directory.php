@@ -27,12 +27,11 @@
                         <thead>
                             <tr>
                                 <th>Venue Name</th>
-                                <th>Venue Type</th>
                                 <th>Capacity</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
-                                <th>Website</th>
-                                <th>Zip Code</th>
+                                <th>City</th>
+                                <th>State</th>
                             </tr>
                         </thead>
                     </table>
@@ -55,7 +54,6 @@
                     "processing": true,
                     "serverSide": true,
                     "dom": '<"top"f>t<"bottom"ip>',
-                    "order": [],
                     "ajax": {
                         url: "include/fetch-venue.php",
                         type: "POST"
