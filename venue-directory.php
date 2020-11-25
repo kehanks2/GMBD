@@ -74,12 +74,15 @@
                 $.ajax({
                     url: 'include/to-profile.php',
                     method: 'POST',
-                    dataType: 'JSON',
                     data: {
                         id: id,
                         name: name
                     }, success: function(data) {
-                        window.location('profile.php');
+                        if (data != 'error') {
+                            window.location.assign(data);
+                        } else {
+                            alert("error");
+                        }
                     }
                 })
             }

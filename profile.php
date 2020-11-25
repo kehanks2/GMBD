@@ -30,16 +30,18 @@ $id = $_SESSION['id'];
         <div class="row">
             <div class="col-sm-12">
                 <div id="header-img">
-                    <!-- insert header image and profile name -->
+                    <!-- insert header image and profile name (accessible with <?php // $name // ?> -->
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-9">
-                <!-- insert profile -->
-                <!-- insert biography -->
-                <!-- insert awards -->                
-                <!-- insert other accolades/info -->
+                <h3>Biography</h3>
+                    <div id="biography"></div>
+                <h3>Awards</h3>
+                    <div id="awards"></div>
+                <h3>Other</h3>               
+                    <div id="other-info"></div>
             </div>
             <div class="col-sm-3">
                 <!-- insert photo -->
