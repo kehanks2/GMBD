@@ -8,32 +8,90 @@
 
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">     
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">   
+        
+        <style>
+            body{
+                margin: 0;
+                padding:0;
+                font-family: arial;
+            }
+
+            #SLIDE_BG{
+                width:100%;
+                height:100%;
+                background-position:center, center;
+                background-image: url(/img/bk.jfif);
+                background-size:cover;
+                background-repeat:no-repeat;
+                backface-visibility:hidden;
+                animation: slideBG 30s linear infinite 0s;
+                animation-timing-function: ease-in-out;
+                background-image: url('/img/bk.jfif')
+            }
+
+            .hcontainer{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                text-transform: uppercase;
+                text-align:center;
+            }
+
+            @keyframes slideBG{
+                0%, 100%{
+                    background-image: url('/img/bk.jfif')
+                }
+                25%{
+                    background-image: url('/img/bk1.jpg')
+                }
+                50%{
+                    background-image: url('/img/bk2.jpg')
+                }
+                75%{
+                    background-image: url('/img/bk3.jpg')
+                }
+            } 
+        </style>
     </head>
 
 <body>
     <?php include('include/navbar.php'); ?>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
                 <!-- add image with site title centered 
                     below title, add a button for each directory in a single line
                 -->
-                <div class="landingpage">
-      <!-- Slide -->
-                    <div class="home_container">
-                        <div class="home_container_inner d-flex flex-column align-items-center justify-content-center">
-                            <h2 class="h2">A directory for everything music in Georgia</h2>
-                            <h1 class="h1">Georgia Music Business Directory</h1>
-                            <h2 class="h2">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2>
-                        </div>
+
+
+                <div class="section-top">
+                    <div class="conent">
+                    </div>
+                    <div class="centered">
+                            <button type="button" class="btn btn-secondary" style="border: 2px solid white; padding-bot:1% ">Login</button>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="border: 2px solid white" >
+                                <label class="btn btn-secondary active">
+                                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Music
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option2" autocomplete="off"> Artist
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option3" autocomplete="off"> Venue
+                                </label>
+                            </div>
                     </div>
                 </div>
+
+
+        <div id="SLIDE_BG">
+            <div class="home_content text-center"  >
+                                <div class="home_subtitle" style="padding-top: 10%"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">A directory for everything music in Georgia</h2></div>
+                                <div class="home_title" style="padding-top: 10px"><h1 style="font-size:120px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Georgia Music Business Directory</h1></div>
+                                <div class="home_link" style="padding-bottom: 140px"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2></div>
             </div>
         </div>
-    </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
@@ -47,6 +105,6 @@
         });
 
     </script>
-
+    <?php include('include/footer.php'); ?>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <img src="#" id="navbar-logo">
+	<img src="/img/LogoMakr-1k85PB.png" width="50" height="50">
     <a class="navbar-brand" href="home.php">Georgia Music Business Directory</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
     aria-label="Toggle navigation">
@@ -12,10 +12,10 @@
 				Artist Directory</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="artist-directory.php">All</a>
-					<a class="dropdown-item" href="#">genre category</a>
-					<a class="dropdown-item" href="#">genre category</a>
-					<a class="dropdown-item" href="#">genre category</a>
-					<a class="dropdown-item" href="#">genre category</a>					
+					<a class="dropdown-item" href="#">Hip-Hop</a>
+					<a class="dropdown-item" href="#">Acoustic</a>
+					<a class="dropdown-item" href="#">Bands</a>
+					<a class="dropdown-item" href="#">Electronic</a>					
 				</div>
 			</li>
             <li class="nav-item dropdown">
@@ -23,20 +23,20 @@
 				Business Directory</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="business-directory.php">All</a>
-					<a class="dropdown-item" href="#">category</a>
-					<a class="dropdown-item" href="#">category</a>
-					<a class="dropdown-item" href="#">category</a>
-					<a class="dropdown-item" href="#">category</a>					
+					<a class="dropdown-item" href="#">Recording</a>
+					<a class="dropdown-item" href="#">Sales</a>
+					<a class="dropdown-item" href="#">Touring</a>
+					<a class="dropdown-item" href="#">Media</a>					
 				</div>
                 <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Venue Directory</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="venue-directory.php">All</a>
-					<a class="dropdown-item" href="#">venue category</a>
-					<a class="dropdown-item" href="#">venue category</a>
-					<a class="dropdown-item" href="#">venue category</a>
-					<a class="dropdown-item" href="#">venue category</a>					
+					<a class="dropdown-item" href="#">Outdoor</a>
+					<a class="dropdown-item" href="#">Amphitheaters</a>
+					<a class="dropdown-item" href="#">Clubs</a>
+					<a class="dropdown-item" href="#">Pubs & Restaurants</a>					
 				</div>
 			</li>
         </ul>

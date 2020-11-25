@@ -14,16 +14,17 @@
     <body>
         <?php include('include/navbar.php'); ?>
 
-        <div class="container">
-            <div class="row d-flex">
-                <div class="justify-content-center">
-                    <h1>Venue Directory</h1>
+        <div style=" background-image:url(/img/wsbk.jpg); border-bottom: double; border-bottom-color: gold; padding-bottom: 150px; padding-top: 1px">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <h1 style="font-size: 100px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Venue Directory</h1>
                 </div>
             </div>
+
+        <div class="container" style="padding-top:30px">
             <!-- venue table -->
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="venue-table" class="table table-striped" style="width:100%;">
+                    <table id="venue-table" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Venue Name</th>
@@ -88,6 +89,6 @@
 
     </script>
 
-
+    <?php include('include/footer.php'); ?>
     </body>
 </html>

@@ -34,23 +34,50 @@ $id = $_SESSION['id'];
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-9">
-                <h3>Biography</h3>
-                    <div id="biography"></div>
-                <h3>Awards</h3>
-                    <div id="awards"></div>
-                <h3>Other</h3>               
-                    <div id="other-info"></div>
-            </div>
-            <div class="col-sm-3">
-                <!-- insert photo -->
-                <!-- insert location -->
-                <!-- insert contact info -->
-                <!-- insert social links -->
-            </div>
-        </div>
     </div>
+
+    <!-- Header -->
+    <div style=" background-color:white; border-bottom: double; border-bottom-color: gold; padding-bottom: 200px; padding-top: 20px">
+    </div>
+
+    
+    <!-- BIO -->
+    <div style=" width: 300px; padding: 50px; margin: 20px">
+      <div style="color: black; display:flex; justify-content:left; padding-left:5px">
+        <strong style="font-size:larger">bio:</strong>
+        <div>
+          <p1>[bio goes here]</p1>
+        </div>
+      </div>
+    </div>
+
+    <!-- History/Awards -->
+    <div style="color: black; display:flex; justify-content:right; padding-right:400px">
+    <b>History: </b>
+      <ul>
+        <li>
+          <ul style="list-style-type:disc">
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- extra Info -->
+    <div style=" width: 300px; padding: 50px; margin: 20px">
+      <div style="color: black; display:flex; justify-content:left; padding-left:5px">
+        <strong style="font-size:larger">Info:</strong>
+        <div>
+          <p1>[info goes here]</p1>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>

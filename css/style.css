@@ -7,13 +7,13 @@ body {
     background-image:url(bk.jfif)
 }
 
-.h2{
+.header2{
     -webkit-text-stroke-width: .5px;
     -webkit-text-stroke-color: black;
     color: white;
 }
 
-.h1{
+.header1{
     font-size:120px;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
@@ -22,4 +22,25 @@ body {
 
 .container{
     padding-top: 25px
+}
+
+.fullBackground{
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.caption{
+    font-size: 30pt;
+    text-transform: uppercase;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

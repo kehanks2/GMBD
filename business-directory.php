@@ -14,12 +14,14 @@
     <body>
         <?php include('include/navbar.php'); ?>
 
-        <div class="container">
-            <div class="row d-flex">
-                <div class="justify-content-center">
-                    <h1>Business Directory</h1>
+
+        <div style=" background-image:url(/img/single.jpg); border-bottom: double; border-bottom-color: gold; padding-bottom: 150px; padding-top: 1px">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <h1 style="font-size: 100px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Business Directory</h1>
                 </div>
             </div>
+
+        <div class="container" style="padding-top:30px">
             <!-- business table -->
             <div class="row">
                 <div class="col-sm-12">
@@ -88,6 +90,6 @@
 
     </script>
 
-
+    <?php include('include/footer.php'); ?>
     </body>
 </html>
