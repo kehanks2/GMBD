@@ -39,10 +39,12 @@
 			  unset($_SESSION['inactive']);
 			if ($myusertype == 'admin') {			 
          		header("Location: admin-home.php");
-		 	} elseif ($myusertype == 'accountant') {
-				header("Location: accountant-home.php");
-		 	} elseif ($myusertype == 'manager') {
-				header("Location: manager-home.php");
+		 	} elseif ($myusertype == 'artist') {
+				header("Location: artist-home.php");
+		 	} elseif ($myusertype == 'venue-owner') {
+				header("Location: venue-owner-home.php");
+			} elseif ($myusertype == 'business-professional') {
+				header("Location: business-professional-home.php");
 		 	}
 		  }
 		 
@@ -108,10 +110,10 @@
 							</form>
 							<?php
 								if ($error_login) { ?>
-									<div class="alert alert-warning">The username and password combination you enter is incorrect.</div>
+									<div class="alert alert-warning">The Username and Password combination you entered is incorrect.</div>
 									<?php $error_login = false;
 								} elseif ($error_inactive) { ?>
-									<div class="alert alert-danger"><strong>Your account is inactive.</strong> Contact the system administrator to reactivate your account.			
+									<div class="alert alert-danger"><strong>Your account is inactive.</strong> Contact the administrator to reactivate your account.			
 							</div>
 								
 											<p><a href="mailto:admin@financetitan.great-site.net">email system admin</a></p>
