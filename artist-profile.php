@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+include("include/config.php");
 session_start();
 
 // code to put profile session variable to $name
@@ -24,60 +24,44 @@ $id = $_SESSION['id'];
 <body>
     <?php include('include/navbar.php'); ?>
 
+	<!-- for jquery to get profile info from server -->
+	<div hidden id="profile-id"><?php echo $id ?></div>
+	<div id="artist-directory-header">
+		<div class="d-flex flex-column align-items-center justify-content-center">
+			<h1><?php echo $name ?></h1>
+		</div>
+	</div>
+
+	<!-- PROFILE -->
     <div class="container">
-        <!-- for jquery to get profile info from server -->
-        <div hidden id="profile-id"><?php echo $id ?></div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="header-img">
-                    <!-- insert header image and profile name (accessible with <?php // $name // ?> -->
-                </div>
-            </div>
-        </div>
+    	<div class="row">
+    		<div class="col-sm-8">
+          		<!-- BIO -->
+          		<div id="bio-section" style="padding-bottom: 24px;">
+            		<h3>Biography</h3>
+            			<p id="biography"></p>
+				 </div>
+				 <!-- Genre -->
+				 <div id="genre-section">
+					 <h3>Genre</h3>
+					 	<p id="genre"></p>
+				 </div>
+			</div>
+			<div class="col-sm-4">
+				<!-- LINKS -->
+				<div id="links-section">
+					<h3>Social Links</h3>
+						<ul id="social-links"></ul>
+					<h3>Website</h3>
+						<p id="website"></p>
+					<h3>Email</h3>
+						<p id="email"></p>
+					<h3>Location</h3>
+						<p id="location"></p>
+				</div>
+			</div>
+     	</div>
     </div>
-
-    <!-- Header -->
-    <div style=" background-color:white; border-bottom: double; border-bottom-color: gold; padding-bottom: 200px; padding-top: 20px">
-    </div>
-
-    
-    <!-- BIO -->
-    <div style=" width: 300px; padding: 50px; margin: 20px">
-      <div style="color: black; display:flex; justify-content:left; padding-left:5px">
-        <strong style="font-size:larger">bio:</strong>
-        <div>
-          <p1>[bio goes here]</p1>
-        </div>
-      </div>
-    </div>
-
-    <!-- History/Awards -->
-    <div style="color: black; display:flex; justify-content:right; padding-right:400px">
-    <b>History: </b>
-      <ul>
-        <li>
-          <ul style="list-style-type:disc">
-            <li>list1</li>
-            <li>list2</li>
-            <li>list3</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <!-- extra Info -->
-    <div style=" width: 300px; padding: 50px; margin: 20px">
-      <div style="color: black; display:flex; justify-content:left; padding-left:5px">
-        <strong style="font-size:larger">Info:</strong>
-        <div>
-          <p1>[info goes here]</p1>
-        </div>
-      </div>
-    </div>
-
-
-
-  </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
@@ -90,21 +74,58 @@ $id = $_SESSION['id'];
 
             get_profile();
             
-            // ajax function to get profile info; pass profile id to function then send to include/fetch-profile.php
+            // ajax function to get profile info; pass profile id to function then send to include/fetch-venue-profile.php
             function get_profile() {
                 var id = $('#profile-id').text();
                 $.ajax({
-                    url: 'include/fetch-profile.php',
+                    url: 'include/fetch-artist-profile.php',
                     method: 'POST',
                     dataType: 'JSON',
                     data: {
                         id: id
                     }, success: function(data) {
-                        // replace placeholders for each piece of profile information in the html with the data from the fetch
-                        // do this with the data passed back from the php or in the php itself (like with the datatables)
+						displayProfile(...data);
                     }
                 })
-            }
+			}
+			
+			// displays profile info from db on profile page
+			function displayProfile(...data) {
+				$('#biography').text(data[0]);
+				$('#genre').text(data[1]);
+				if (data[2] != null) {
+					if (data[3] != null) {
+						if (data[4] != null) {
+							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: '+data[4]+'</li>');
+						} else {
+							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: </li>');
+						}						
+					} else {
+						if (data[4] != null) {
+							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter: </li><li id="instagram">Instagram: '+data[4]+'</li>');
+						} else {
+							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter:</li></li><li id="instagram">Instagram: </li>');
+						}						
+					}
+				} else {
+					if (data[3] != null) {
+						if (data[4] != null) {
+							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: '+data[4]+'</li>');
+						} else {
+							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: </li>');
+						}						
+					} else {
+						if (data[4] != null) {
+							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: </li><li id="instagram">Instagram: '+data[4]+'</li>');
+						} else {
+							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: </li><li id="instagram">Instagram: </li>');
+						}
+					}
+				}
+				$('#website').text(data[4]);
+				$('#email').text(data[5]);
+				$('#location').html(data[6]+', '+data[7]);
+			}
 
         })
     </script>

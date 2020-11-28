@@ -112,7 +112,7 @@ $id = $_SESSION['id'];
 				}
 				$('#website').text(data[4]);
 				$('#email').text(data[5]);
-				$('#location').html(data[6]+', '+data[7]+', '+data[8]);
+				$('#location').html(data[6]+', '+data[7]+', '+data[8]+' '+data[9]);
 			}
 
         })

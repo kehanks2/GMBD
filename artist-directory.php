@@ -14,9 +14,9 @@
     <body>
         <?php include('include/navbar.php'); ?>
 
-        <div style=" background-image:url(/img/extra.jpg); border-bottom: double; border-bottom-color: gold; padding-bottom: 150px; padding-top: 1px">
+        <div id="artist-directory-header">
             <div class="d-flex flex-column align-items-center justify-content-center">
-                <h1 style="font-size: 100px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Artist Directory</h1>
+                <h1>Artist Directory</h1>
             </div>
         </div>
 
@@ -39,6 +39,11 @@
             </div>
         </div>
 
+        
+    <!-- FOOTER -->
+    <?php include('include/footer.php'); ?>
+
+    <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
@@ -60,11 +65,9 @@
                         type: "POST"
                     }
                 });
-            };
+            };            
 
-            
-
-            $('#venue-table').on('click', '#profile-name', function() {
+            $('#artist-table').on('click', '#profile-name', function() {
                 var id = $(this).parent('div').data('id');
                 var name = $(this).text();
 
@@ -73,14 +76,17 @@
 
             function toProfile(id, name) {
                 $.ajax({
-                    url: 'include/to-profile.php',
+                    url: 'include/to-artist-profile.php',
                     method: 'POST',
-                    dataType: 'JSON',
                     data: {
                         id: id,
                         name: name
                     }, success: function(data) {
-                        window.location('profile.php');
+                        if (data != 'error') {
+                            window.location.assign(data);
+                        } else {
+                            alert("error");
+                        }
                     }
                 })
             }
@@ -88,7 +94,5 @@
         });
 
     </script>
-
-    <?php include('include/footer.php'); ?>
     </body>
 </html>
