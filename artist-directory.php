@@ -15,10 +15,10 @@
         <?php include('include/navbar.php'); ?>
 
         <div style=" background-image:url(/img/extra.jpg); border-bottom: double; border-bottom-color: gold; padding-bottom: 150px; padding-top: 1px">
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <h1 style="font-size: 100px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Artist Directory</h1>
-                </div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <h1 style="font-size: 100px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Artist Directory</h1>
             </div>
+        </div>
 
         <div class="container" style="padding-top:30px">
 

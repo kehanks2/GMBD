@@ -78,9 +78,6 @@
 <!-- NAVIGATION -->
 <?php include('include/navbar.php'); ?>
 
-<!-- BANNER -->
-<?php include('include/banner.php'); ?>
-
 <!-- PAGE CONTENT -->
 <section id="sign-in-form" class="container-fluid">
 	<div class="row">

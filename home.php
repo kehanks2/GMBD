@@ -4,65 +4,19 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Artist Directory</title>
+        <title>Georgia Music Business Directory</title>
 
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">   
         
         <style>
-            body{
-                margin: 0;
-                padding:0;
-                font-family: arial;
-            }
 
-            #SLIDE_BG{
-                width:100%;
-                height:100%;
-                background-position:center, center;
-                background-image: url(/img/bk.jfif);
-                background-size:cover;
-                background-repeat:no-repeat;
-                backface-visibility:hidden;
-                animation: slideBG 30s linear infinite 0s;
-                animation-timing-function: ease-in-out;
-                background-image: url('/img/bk.jfif')
-            }
-
-            .hcontainer{
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                text-transform: uppercase;
-                text-align:center;
-            }
-
-            @keyframes slideBG{
-                0%, 100%{
-                    background-image: url('/img/bk.jfif')
-                }
-                25%{
-                    background-image: url('/img/bk1.jpg')
-                }
-                50%{
-                    background-image: url('/img/bk2.jpg')
-                }
-                75%{
-                    background-image: url('/img/bk3.jpg')
-                }
-            } 
         </style>
     </head>
 
 <body>
     <?php include('include/navbar.php'); ?>
-
-                <!-- add image with site title centered 
-                    below title, add a button for each directory in a single line
-                -->
-
 
                 <div class="section-top">
                     <div class="conent">
@@ -88,7 +42,7 @@
             <div class="home_content text-center"  >
                                 <div class="home_subtitle" style="padding-top: 10%"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">A directory for everything music in Georgia</h2></div>
                                 <div class="home_title" style="padding-top: 10px"><h1 style="font-size:120px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Georgia Music Business Directory</h1></div>
-                                <div class="home_link" style="padding-bottom: 140px"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2></div>
+                                <div class="home_link" style="padding-bottom: 20%"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2></div>
             </div>
         </div>
 

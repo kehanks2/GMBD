@@ -14,11 +14,11 @@
     <body>
         <?php include('include/navbar.php'); ?>
 
-        <div style=" background-image:url(/img/wsbk.jpg); border-bottom: double; border-bottom-color: gold; padding-bottom: 150px; padding-top: 1px">
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <h1 style="font-size: 100px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Venue Directory</h1>
-                </div>
+        <div id="venue-directory-header">
+		    <div class="d-flex flex-column align-items-center justify-content-center">
+                <h1>Venue Directory</h1>
             </div>
+		</div>
 
         <div class="container" style="padding-top:30px">
             <!-- venue table -->
@@ -71,7 +71,7 @@
 
             function toProfile(id, name) {
                 $.ajax({
-                    url: 'include/to-profile.php',
+                    url: 'include/to-venue-profile.php',
                     method: 'POST',
                     data: {
                         id: id,

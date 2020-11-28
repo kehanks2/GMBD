@@ -51,7 +51,7 @@
 				</div>
             </li>
             <li class="nav-item">
-				<a class="nav-link" id="logout" href="#">Log Out</a>
+				<a class="nav-link" id="login" href="login.php">Log In</a>
 			</li>
 		</ul>
     </div>
