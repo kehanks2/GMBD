@@ -22,7 +22,7 @@
                     <div class="conent">
                     </div>
                     <div class="centered">
-                            <button type="button" class="btn btn-secondary" style="border: 2px solid white; padding-bot:1% ">Login</button>
+                            <button type="button" class="btn btn-secondary" style="border: 2px solid white; padding-bottom:1% ">Login</button>
                             <div class="btn-group btn-group-toggle" data-toggle="buttons" style="border: 2px solid white" >
                                 <label class="btn btn-secondary active">
                                   <input type="radio" name="options" id="option1" autocomplete="off" checked> Music
