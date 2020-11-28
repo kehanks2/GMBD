@@ -90,12 +90,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include('include/navbar.php'); ?>
 
 <!-- PAGE CONTENT -->
-<section id="sign-in-form" class="container-fluid">
-	<div class="row">
-		<div class="col-sm-12" id="help-modal-container">
-			<?php include('include/help-modal.php'); ?>
-		</div>
-	</div>
+<div id="sign-in-form" class="container-fluid">
+	
 	<div class="row justify-content-center">
 		<div class="col-md-6">
 			<div id="home-accordion" role="tablist">
@@ -147,7 +143,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		  	</div>
 		</div>
 	</div>	
-</section>
+</div>
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/popper.min.js"></script>
