@@ -1,58 +1,69 @@
 <?php
-	ini_set('display_startup_errors', true);
-	error_reporting(E_ALL);
-	ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
+error_reporting(E_ALL);
+ini_set('display_errors', true);
 
-   include("include/config.php");
-   session_start();
+include("include/config.php");
+session_start();
 
-	$error_inactive = false;
-	$error_login = false;
+$error_inactive = false;
+$error_login = false;
    
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      
-      $sql = "SELECT Users.*, Passwords.CurrentPassword from Users,Passwords WHERE Passwords.PasswordID = Users.PasswordID and UserName = '$myusername' and CurrentPassword = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-	       
-      $count = mysqli_num_rows($result);
-	  
-      // If result matched $myusername and $mypassword, table row must be 1 row
-	  // send user to home page for their account type
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	// username and password sent from form 
+	
+	$myusername = mysqli_real_escape_string($db,$_POST['username']);
+	$mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+	
+	$sql = "SELECT * from Users WHERE Username = '$myusername' and Password = '$mypassword'";
+	$result = mysqli_query($db,$sql);
+	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 		
-      if($count == 1) {
+	$count = mysqli_num_rows($result);
+	
+	// If result matched $myusername and $mypassword, table row must be 1 row
+	// send user to home page for their account type
+	
+	if($count == 1) {
 		  
-	  	 $row2 = mysqli_fetch_assoc($result);
-	  	 $myusertype = $row['UserType'];
-		 $isActive = $row['IsActive'];
+	  	$row2 = mysqli_fetch_assoc($result);
+		$ut = $row['UserType'];
+		
+		$usertype = '';
+		if ($ut == 0) {
+			$usertype = 'Admin';
+		} else if ($ut == 1) {
+			$usertype = 'Artist';
+		} else if ($ut == 2) {
+			$usertype = 'Business';
+		} else if ($ut == 3) {
+			$usertype = 'Venue';
+		}
+
+		$isActive = $row['IsActive'];
       
-         $_SESSION['login_user'] = $myusername;
-		 $_SESSION['user_type'] = $myusertype;
-		  if ($isActive == 0) {			  
+        $_SESSION['login_user'] = $myusername;
+		$_SESSION['user_type'] = $usertype;
+		if ($isActive == 0) {			  
 			$error_inactive = true;
 			$_SESSION['inactive'] = $isActive;
-		  } else {
-			  unset($_SESSION['inactive']);
-			if ($myusertype == 'admin') {			 
-         		header("Location: admin-home.php");
-		 	} elseif ($myusertype == 'artist') {
-				header("Location: artist-home.php");
-		 	} elseif ($myusertype == 'venue-owner') {
-				header("Location: venue-owner-home.php");
-			} elseif ($myusertype == 'business-professional') {
-				header("Location: business-professional-home.php");
-		 	}
-		  }
-		 
-         
-      }else {
-         $error_login = true;
-      }
-   }
+		} else {
+			unset($_SESSION['inactive']);
+			if ($usertype == 'Admin') {			 
+				header("Location: admin-home.php");
+			} elseif ($usertype == 'Artist') {
+				header("Location: home.php");
+			} elseif ($usertype == 'Venue') {
+				header("Location: home.php");
+			} elseif ($usertype == 'Business') {
+				header("Location: home.php");
+			}
+		}
+		          
+    } else {
+        $error_login = true;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +73,10 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Finance Titan - Sign In</title>
+		<title>Sign In</title>
 
 		<!-- Stylesheets -->
-		<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">

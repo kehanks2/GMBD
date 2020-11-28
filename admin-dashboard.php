@@ -35,8 +35,8 @@
                     <table id="admin-table" class="table table-striped" style="width:100%;">
                         <thead>
                             <tr>
-                                <th>Username Name</th>
-                                <th>Account type</th>
+                                <th>Profile Name</th>
+                                <th>Account Type</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
