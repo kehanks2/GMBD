@@ -20,13 +20,31 @@
 <body>
     <?php include('include/navbar.php'); ?>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                
+
+        <div id="admin-dashboard-header">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <h1>Admin Dashboard</h1>
             </div>
         </div>
-    </div>
+
+        <div class="container" style="padding-top:30px">
+
+            <!-- artist table -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="admin-table" class="table table-striped" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Username Name</th>
+                                <th>Account type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>

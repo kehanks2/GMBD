@@ -96,13 +96,13 @@ $id = $_SESSION['id'];
 				if (data[2] != null) {
 					if (data[3] != null) {
 						if (data[4] != null) {
-							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: '+data[4]+'</li>');
+							$('#social-links').html('<li id="facebook"><a href="'+data[2]+'">Facebook</a></li><li id="twitter"><a href="'+data[3]+'">Twitter</a></li><li id="instagram"><a href="'+data[4]+'">Instagram</a></li>');
 						} else {
-							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: </li>');
+							$('#social-links').html('<li id="facebook"><a href="'+data[2]+'">Facebook</a></li><li id="twitter"><a href="'+data[3]+'">Twitter</a></li><li id="instagram">Instagram: </li>');
 						}						
 					} else {
 						if (data[4] != null) {
-							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter: </li><li id="instagram">Instagram: '+data[4]+'</li>');
+							$('#social-links').html('<li id="facebook"><a href="'+data[2]+'">Facebook</a></li><li id="twitter">Twitter: </li><li id="instagram">Instagram: '+data[4]+'</li>');
 						} else {
 							$('#social-links').html('<li id="facebook">Facebook: '+data[2]+'</li><li id="twitter">Twitter:</li></li><li id="instagram">Instagram: </li>');
 						}						
@@ -110,21 +110,21 @@ $id = $_SESSION['id'];
 				} else {
 					if (data[3] != null) {
 						if (data[4] != null) {
-							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: '+data[4]+'</li>');
+							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter"><a href="'+data[3]+'">Twitter</a></li><li id="instagram"><a href="'+data[4]+'">Instagram</a></li>');
 						} else {
-							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: '+data[3]+'</li><li id="instagram">Instagram: </li>');
+							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter"><a href="'+data[3]+'">Twitter</a></li><li id="instagram">Instagram: </li>');
 						}						
 					} else {
 						if (data[4] != null) {
-							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: </li><li id="instagram">Instagram: '+data[4]+'</li>');
+							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: </li><li id="instagram"><a href="'+data[4]+'">Instagram</a></li>');
 						} else {
 							$('#social-links').html('<li id="facebook">Facebook: </li><li id="twitter">Twitter: </li><li id="instagram">Instagram: </li>');
 						}
 					}
 				}
-				$('#website').text(data[4]);
-				$('#email').text(data[5]);
-				$('#location').html(data[6]+', '+data[7]);
+				$('#website').html('<a href="'+data[5]+'">'+data[5]+'</a>');
+				$('#email').text(data[6]);
+				$('#location').html(data[7]+', '+data[8]);
 			}
 
         })

@@ -130,3 +130,11 @@ body {
     -webkit-text-stroke-color: black;
     color: white;
 }
+
+#admin-dashboard-header {
+    background-color: lightblue;
+    border-bottom: double;
+    border-bottom-color: gold;
+    padding-bottom: 150px;
+    padding-top: 1px
+}

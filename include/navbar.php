@@ -46,7 +46,7 @@
 				My Account</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="#">My Profile</a>
-					<a class="dropdown-item" href="#">Settings</a>
+					<a class="dropdown-item" href="admin-dashboard.php">AdminPage</a>
 					<a class="dropdown-item" href="#">Messages</a>					
 				</div>
             </li>

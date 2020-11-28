@@ -2,7 +2,7 @@
 
 $id = mysqli_real_escape_string($db, $_POST['id']);
 
-$query = "SELECT * FROM Venue WHERE VenueID = '$id'";
+$query = "SELECT * FROM Artist WHERE artistId = '$id'";
 
 $result = mysqli_query($db, $query);
 
