@@ -3,8 +3,8 @@
 
 <?php
 //--------------- FILTER---------------//
-//include('config.php');
-
+include('include/config.php');
+session_start();
 //$capacity = '';
 //$query = "SELECT DISTINCT Capacity FROM Venue ORDER BY Capacity ASC";
 //$statement = $connect->prepare($query);

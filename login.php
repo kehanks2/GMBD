@@ -6,7 +6,6 @@ ini_set('display_errors', true);
 include("include/config.php");
 session_start();
 
-$error_inactive = false;
 $error_login = false;
    
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if($count == 1) {
 		  
 	  	$row2 = mysqli_fetch_assoc($result);
-		$ut = $row['UserType'];
+		$ut = $row['AccountTypeID'];
 		
 		$usertype = '';
 		if ($ut == 0) {
@@ -40,24 +39,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$usertype = 'Venue';
 		}
 
-		$isActive = $row['IsActive'];
-      
         $_SESSION['login_user'] = $myusername;
 		$_SESSION['user_type'] = $usertype;
-		if ($isActive == 0) {			  
-			$error_inactive = true;
-			$_SESSION['inactive'] = $isActive;
-		} else {
-			unset($_SESSION['inactive']);
-			if ($usertype == 'Admin') {			 
-				header("Location: admin-home.php");
-			} elseif ($usertype == 'Artist') {
-				header("Location: home.php");
-			} elseif ($usertype == 'Venue') {
-				header("Location: home.php");
-			} elseif ($usertype == 'Business') {
-				header("Location: home.php");
-			}
+		if ($usertype == 'Admin') {			 
+			header("Location: admin-dashboard.php");
+		} elseif ($usertype == 'Artist') {
+			header("Location: home.php");
+		} elseif ($usertype == 'Venue') {
+			header("Location: home.php");
+		} elseif ($usertype == 'Business') {
+			header("Location: home.php");
 		}
 		          
     } else {

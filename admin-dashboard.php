@@ -1,7 +1,10 @@
 <?php
+include("include/config.php");
+session_start();
 
-//do usertype check -- only show page if user is admin
-
+if ($_SESSION['user_type'] != 'Admin') {
+    header("Location: home.php");
+}
 ?>
 
 <!DOCTYPE html>
