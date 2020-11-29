@@ -32,7 +32,7 @@ if ($_SESSION['user_type'] != 'Admin') {
 
         <div class="container" style="padding-top:30px">
             <!-- select usertype -->
-            <div class="row form-inline">		
+            <div class="row form-inline" style="margin-bottom: 25px;">		
                 <div class="form-group">
                     <select class="form-control" id="select-usertype">
                         <option selected disabled>Select a usertype</option>
@@ -54,8 +54,8 @@ if ($_SESSION['user_type'] != 'Admin') {
                         <table id="artist-table" class="table table-striped" style="width:100%;">
                             <thead>
                                 <tr>
-                                    <th>Artist Name</th>
-                                    <th>Status</th>
+                                    <th data-toggle="tooltip" title="Sort by name">Artist Name</th>
+                                    <th data-toggle="tooltip" title="Sort by status">Status</th>
                                     <th>Update Status</th>
                                 </tr>
                             </thead>
@@ -65,8 +65,8 @@ if ($_SESSION['user_type'] != 'Admin') {
                         <table id="business-table" class="table table-striped" style="width:100%;">
                             <thead>
                                 <tr>
-                                    <th>Business Name</th>
-                                    <th>Status</th>
+                                    <th data-toggle="tooltip" title="Sort by name">Business Name</th>
+                                    <th data-toggle="tooltip" title="Sort by status">Status</th>
                                     <th>Update Status</th>
                                 </tr>
                             </thead>
@@ -76,8 +76,8 @@ if ($_SESSION['user_type'] != 'Admin') {
                         <table id="venue-table" class="table table-striped" style="width:100%;">
                             <thead>
                                 <tr>
-                                    <th>Venue Name</th>
-                                    <th>Status</th>
+                                    <th data-toggle="tooltip" title="Sort by name">Venue Name</th>
+                                    <th data-toggle="tooltip" title="Sort by status">Status</th>
                                     <th>Update Status</th>
                                 </tr>
                             </thead>
@@ -100,7 +100,7 @@ if ($_SESSION['user_type'] != 'Admin') {
             fetch_data();
 
             function fetch_data() {
-                if ($('#show-artist-table').is('visible')) {
+                if ($('#show-artist-table').is(':visible')) {
                     var dataTable = $('#artist-table').DataTable({
                         "processing": true,
                         "serverSide": true,
@@ -112,7 +112,7 @@ if ($_SESSION['user_type'] != 'Admin') {
                             data: { table: "Artist" }
                         }
                     });
-                } else if ($('#show-business-table').is('visible')) {
+                } else if ($('#show-business-table').is(':visible')) {
                     var dataTable = $('#business-table').DataTable({
                         "processing": true,
                         "serverSide": true,
@@ -124,7 +124,7 @@ if ($_SESSION['user_type'] != 'Admin') {
                             data: { table: "Business" }
                         }
                     });
-                } else if ($('#show-venue-table').is('visible')) {
+                } else if ($('#show-venue-table').is(':visible')) {
                     var dataTable = $('#venue-table').DataTable({
                         "processing": true,
                         "serverSide": true,
@@ -146,14 +146,20 @@ if ($_SESSION['user_type'] != 'Admin') {
                     $('#show-artist-table').removeAttr('hidden');
                     $('#show-business-table').prop('hidden', true);
                     $('#show-venue-table').prop('hidden', true);
+                    
+                    fetch_data();
                 } else if (usertype == 'Business') {
                     $('#show-business-table').removeAttr('hidden');
                     $('#show-artist-table').prop('hidden', true);
                     $('#show-venue-table').prop('hidden', true);
+                    
+                    fetch_data();
                 } else if (usertype == 'Venue') {
                     $('#show-venue-table').removeAttr('hidden');
                     $('#show-artist-table').prop('hidden', true);
                     $('#show-business-table').prop('hidden', true);
+                    
+                    fetch_data();
                 } else {
                     return;
                 }
@@ -161,51 +167,67 @@ if ($_SESSION['user_type'] != 'Admin') {
             
             // artist approved
             $('#artist-table').on('click', '#approve', function () {
-                updateStatus('Artist', 1);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Artist', 1, id);
             })
 
             // artist pending
             $('#artist-table').on('click', '#pending', function () {
-                updateStatus('Artist', 0);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Artist', 0, id);
             })
 
             // artist denied
             $('#artist-table').on('click', '#deny', function () {
-                updateStatus('Artist', 2);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Artist', 2, id);
             })
             
             // business approved
             $('#business-table').on('click', '#approve', function () {
-                updateStatus('Business', 1);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Business', 1, id);
             })
 
             // business pending
             $('#business-table').on('click', '#pending', function () {
-                updateStatus('Business', 0);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Business', 0, id);
             })
 
             // business denied
             $('#business-table').on('click', '#deny', function () {
-                updateStatus('Business', 2);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Business', 2, id);
             })
             
             // venue approved
             $('#venue-table').on('click', '#approve', function () {
-                updateStatus('Venue', 1);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Venue', 1, id);
             })
 
             // venue pending
             $('#venue-table').on('click', '#pending', function () {
-                updateStatus('Venue', 0);
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Venue', 0, id);
             })
 
             // venue denied
-            $('#venue-table').on('click', '#deny', function () {
-                updateStatus('Venue', 2);
+            $('#venue-table').on('click', '#deny', function () {                
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                updateStatus('Venue', 2, id);
             })
 
-            function updateStatus(table, status) {
-                var id = $(this).parents('tr').find('td').find('div').data("id");
+            function updateStatus(table, status, id) {
+                var tbl = '';
+                if (table == 'Artist') {
+                    tbl = '#artist-table';
+                } else if (table == 'Business') {
+                    tbl = '#business-table';
+                } else if (table == 'Venue') {
+                    tbl = '#venue-table';
+                }
                 $.ajax ({
                     url: 'include/update-status.php',
                     method: 'POST',
@@ -215,7 +237,7 @@ if ($_SESSION['user_type'] != 'Admin') {
                         status: status,
                         id: id
                     }, success: function(data) {
-                        location.reload();
+                        $(tbl).DataTable().ajax.reload();
                     }
                 })
             }

@@ -33,11 +33,11 @@ session_start();
                     <table id="business-table" class="table table-striped" style="width:100%;">
                         <thead>
                             <tr>
-                                <th>Business Name</th>
-                                <th>Category</th>
-                                <th>Subcategory</th>
-                                <th>Location</th>
-                                <th>Phone Number</th>
+                                <th data-toggle="tooltip" title="Sort by name">Business Name</th>
+                                <th data-toggle="tooltip" title="Sort by category">Category</th>
+                                <th data-toggle="tooltip" title="Sort by subcategory">Subcategory</th>
+                                <th data-toggle="tooltip" title="Sort by location">Location</th>
+                                <th data-toggle="tooltip" title="Sort by phone number">Phone Number</th>
                             </tr>
                         </thead>
                     </table>

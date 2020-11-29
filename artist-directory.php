@@ -49,10 +49,10 @@ session_start();
                     <table id="artist-table" class="table table-striped" style="width:100%;">
                         <thead>
                             <tr>
-                                <th>Artist Name</th>
-                                <th>Genre</th>
-                                <th>Website</th>
-                                <th>Email</th>
+                                <th data-toggle="tooltip" title="Sort by name">Artist Name</th>
+                                <th data-toggle="tooltip" title="Sort by genre">Genre</th>
+                                <th data-toggle="tooltip" title="Sort by website">Website</th>
+                                <th data-toggle="tooltip" title="Sort by email">Email</th>
                             </tr>
                         </thead>
                     </table>

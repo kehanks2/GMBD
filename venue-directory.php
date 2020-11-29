@@ -57,12 +57,12 @@ session_start();
                     <table id="venue-table" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Venue Name</th>
-                                <th>Capacity</th>
-                                <th>Phone Number</th>
-                                <th>Email</th>
-                                <th>City</th>
-                                <th>State</th>
+                                <th data-toggle="tooltip" title="Sort by name">Venue Name</th>
+                                <th data-toggle="tooltip" title="Sort by capacity">Capacity</th>
+                                <th data-toggle="tooltip" title="Sort by number">Phone Number</th>
+                                <th data-toggle="tooltip" title="Sort by email">Email</th>
+                                <th data-toggle="tooltip" title="Sort by city">City</th>
+                                <th data-toggle="tooltip" title="Sort by state">State</th>
                             </tr>
                         </thead>
                     </table>
