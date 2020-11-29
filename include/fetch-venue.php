@@ -9,14 +9,12 @@ $columns = array('VenueName', 'Capacity', 'PhoneNumber', 'Email', 'City', 'State
 
 $query = "SELECT * FROM Venue WHERE (Status = 1) ";
 
-//--------------- FILTER---------------//
-if(isset($_POST['filter_capacity']) && $_POST['filter_capacity'] != '')
-{
- $query .= '
- WHERE Capacity = "'.$_POST['filter_capacity'].'" 
- ';
+// filters
+if(isset($_POST['min'], $_POST['max']) && $_POST['min'] != '' && $_POST['max'] != '') {
+    $min = mysqli_real_escape_string($db, $$_POST['min']);
+    $max = mysqli_real_escape_string($db, $$_POST['max']);
+    $query .= "AND (Capacity >= '$min' AND Capacity <= '$max') ";
 }
-
 
 if(isset($_POST["search"]["value"])) {
     $query .= ' 

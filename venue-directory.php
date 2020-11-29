@@ -39,10 +39,33 @@ session_start();
 		</div>
 
         <div class="container" style="padding-top:30px">
-        <!-- filters -->
-            <div clas="row">
-                <div class="col-sm-3">
-                    <input type="">
+            <!-- filters -->
+            <div id="filters" role="tablist">
+                <div class="card">
+                    <div class="card-header" role="tab" id="filters-head">
+                        <h5 style="margin-bottom:0;"><a href="#filters-collapse" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="filters-collapse">
+                            Filters
+                        </a></h5>
+                    </div>
+                    <div id="filters-collapse" class="collapse" role="tabpanel" aria-labelledby="filters-head" data-parent="#filters">
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- capacity range filter -->
+                                <div class="col-auto form-inline">
+                                    <label for="capacity-range" class="col-form-label"><strong>Capacity Range:</strong></label>
+                                    <div class="capacity-range">
+                                        <input type="number" class="form-control" id="minCapacity">
+                                        <input type="number" class="form-control" id="maxCapacity">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary btn-width" id="apply-filters">
+                                    Apply
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- venue table -->
@@ -76,42 +99,50 @@ session_start();
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
 
-$.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var min = parseInt( $('#min').val(), 10 );
-        var max = parseInt( $('#max').val(), 10 );
-        var capacity = parseFloat( data[3] ) || 0; // use data for the capacity column
- 
-        if ( ( isNaN( min ) && isNaN( max ) ) ||
-             ( isNaN( min ) && capacity <= max ) ||
-             ( min <= capacity   && isNaN( max ) ) ||
-             ( min <= capacity   && capacity <= max ) )
-        {
-            return true;
-        }
-        return false;
-    }
-);
-
+        /* $.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                var min = parseInt( $('#min').val(), 10 );
+                var max = parseInt( $('#max').val(), 10 );
+                var capacity = parseFloat( data[3] ) || 0; // use data for the capacity column
+        
+                if ( ( isNaN( min ) && isNaN( max ) ) ||
+                    ( isNaN( min ) && capacity <= max ) ||
+                    ( min <= capacity   && isNaN( max ) ) ||
+                    ( min <= capacity   && capacity <= max ) )
+                {
+                    return true;
+                }
+                return false;
+            }
+        ); */
 
         $(document).ready(function() {
+            var filters = Array('', '');
             fetch_data();
-
             function fetch_data() {
+                var min = '';
+                var max = '';
+                if (filters[0] != '') {
+                    min = filters[0];
+                    max = filters[1]; 
+                }
                 var dataTable = $('#venue-table').DataTable({
                     "processing": true,
                     "serverSide": true,
                     "dom": '<"top"f>t<"bottom"ip>',
                     "ajax": {
                         url: "include/fetch-venue.php",
-                        type: "POST"
+                        type: "POST",
+                        data: {
+                            min: min,
+                            max: max
+                        }
                     }
                 });
                 $('#min, #max').keyup( function() {
                     table.draw();
                 } );
             };
-//--------------- FILTER---------------//
 
             function toProfile(id, name) {
                 $.ajax({
@@ -129,6 +160,26 @@ $.fn.dataTable.ext.search.push(
                     }
                 })
             }
+
+            // filters
+            $('#apply-filters').click(function () {
+                if ($('#minCapacity').val()) {
+					filters.push($('#minCapacity').val());
+					if ($('#maxCapacity').val()) {
+						filters.push($('#maxCapacity').val());
+					} else {
+						filters.push(999999);
+					}
+				} else {
+					filters.push('0');
+					if ($('#maxCapacity').val()) {
+						filters.push($('#maxCapacity').val());
+					} else {
+						filters.push(999999);
+					}
+				}               
+                $('#venue-table').DataTable.reload();
+            });
             
         });
 
