@@ -49,7 +49,7 @@ session_start();
                                         <input type="checkbox" value="pop" id="pop" name="choose-genre" class="form-check"><label for="pop">Pop</label>
                                     </div>
                                     <div class="form-inline">
-                                        <input type="checkbox" value="hip-hop" id="hip-hop" name="choose-genre" class="form-check"><label for="hip-hop">Hip Hop</label>
+                                        <input type="checkbox" value="hip hop" id="hip-hop" name="choose-genre" class="form-check"><label for="hip-hop">Hip Hop</label>
                                     </div>
                                     <div class="form-inline">
                                         <input type="checkbox" value="rap" id="rap" name="choose-genre" class="form-check"><label for="rap">Rap</label>
@@ -67,6 +67,7 @@ session_start();
                                         <input type="checkbox" value="electronic" id="electronic" name="choose-genre" class="form-check"><label for="electronic">Electronic</label>
                                     </div>
                                 </div>
+                            </div>
                             <div class="row">
                                 <button type="button" class="btn btn-primary btn-width" id="apply-filters">
                                     Apply
@@ -75,7 +76,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>      
             <!-- artist table -->
             <div class="row">
                 <div class="col-sm-12">
@@ -106,7 +107,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var filters = Array();
+            var filters = [];
             fetch_data();
 
             // table creation from db
@@ -160,11 +161,12 @@ session_start();
             }
 
             // filters
-            $('#apply-filters').click(function () {
+            $(document).on('click', '#apply-filters', function () {
                 //type filters
+                filters = [];
 				$.each($('input[name="choose-genre"'), function() {
 					if ($(this).is(':checked')) {
-						filters.push($(this).text());
+						filters.push($(this).val());
 					} else {
 						filters.push(0);
 					}

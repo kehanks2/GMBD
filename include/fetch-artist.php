@@ -10,22 +10,29 @@ $columns = array('artistName', 'genre', 'website', 'email');
 $query = "SELECT * FROM Artist WHERE (Status = 1) ";
 
 // filters
-if(isset($_POST['genre0'], $_POST['genre1'], $_POST['genre2'], $_POST['genre3'], $_POST['genre4'], $_POST['genre5'], 
-        $_POST['genre6'], $_POST['genre7']) && $_POST['genre0'] != '' && $_POST['genre1'] != '' && $_POST['genre2'] != '' 
-        && $_POST['genre3'] != '' && $_POST['genre4'] != '' && $_POST['genre5'] != '' && $_POST['genre6'] != '' && $_POST['genre7'] != '') {
-    $genre = array($_POST['genre0'], $_POST['genre1'], $_POST['genre2'], $_POST['genre3'], $_POST['genre4'], $_POST['genre5'], $_POST['genre6'], $_POST['genre7']);
-    $c = 0;
-    for ($i = 0; $i < count($genre); $i++) {
-        if ($genre[$i] != 0) {
-            if ($c = 0) {                
-                $query .= "AND (Genre LIKE '%".$genre[$i]."%' ";
-            } else {                
-                $query .= "OR Genre LIKE '%".$genre[$i]."%' ";
-            }
-            $c++;
-        }
-    }
-    $query .= ")";
+if (isset($_POST['genre0'], $_POST['genre1'], $_POST['genre2'], $_POST['genre3'], $_POST['genre4'], $_POST['genre5'], 
+        $_POST['genre6'], $_POST['genre7']) &&
+        $_POST['genre0'] != '' && $_POST['genre1'] != '' && $_POST['genre2'] != '' && $_POST['genre3'] != '' && 
+        $_POST['genre4'] != '' && $_POST['genre5'] != '' && $_POST['genre6'] != '' && $_POST['genre7'] != '') {
+            if (($_POST['genre0'] == 0 && $_POST['genre1'] == 0 && $_POST['genre2'] == 0 && $_POST['genre3'] == 0 && 
+            $_POST['genre4'] == 0 && $_POST['genre5'] == 0 && $_POST['genre6'] == 0 && $_POST['genre7'] == 0)) {
+                
+            } else {
+                $genre = array($_POST['genre0'], $_POST['genre1'], $_POST['genre2'], $_POST['genre3'], $_POST['genre4'], $_POST['genre5'], $_POST['genre6'], $_POST['genre7']);
+                $c = 0;
+                for ($i = 0; $i < count($genre); $i++) {
+                    if ($genre[$i] != "0") {
+                        $g = $genre[$i];
+                        if ($c == 0) {                
+                            $query .= 'AND (genre LIKE "%'.$g.'%"';
+                        } else {                
+                            $query .= ' OR genre LIKE "%'.$g.'%"';
+                        }
+                        $c++;
+                    }
+                }
+                $query .= ")";
+            }    
 }
 
 if(isset($_POST["search"]["value"])) {
