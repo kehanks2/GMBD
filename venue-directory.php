@@ -39,21 +39,15 @@ session_start();
 		</div>
 
         <div class="container" style="padding-top:30px">
+        <!-- filters -->
+            <div clas="row">
+                <div class="col-sm-3">
+                    <input type=""
+                </div>
+            </div>
             <!-- venue table -->
             <div class="row">
                 <div class="col-sm-12">
-
-                    <table border="0" cellspacing="5" cellpadding="5">
-                        <tbody><tr>
-                            <td>Minimum Capacity:</td>
-                            <td><input type="text" id="min" name="min"></td>
-                        </tr>
-                        <tr>
-                            <td>Maximum Capacity:</td>
-                            <td><input type="text" id="max" name="max"></td>
-                        </tr>
-                    </tbody></table>
-
                     <table id="venue-table" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
