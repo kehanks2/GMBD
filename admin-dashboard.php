@@ -32,7 +32,7 @@ if ($_SESSION['user_type'] != 'Admin') {
 
         <div class="container" style="padding-top:30px">
 
-            <!-- artist table -->
+            <!-- admin table -->
             <div class="row">
                 <div class="col-sm-12">
                     <table id="admin-table" class="table table-striped" style="width:100%;">
@@ -49,6 +49,7 @@ if ($_SESSION['user_type'] != 'Admin') {
         </div>
 
 
+    <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
@@ -57,9 +58,20 @@ if ($_SESSION['user_type'] != 'Admin') {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            
-        });
+            fetch_data();
 
+            function fetch_data() {
+                var dataTable = $('#admin-table').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "dom": '<"top"f>t<"bottom"ip>',
+                    "order": [],
+                    "ajax": {
+                        url: "include/fetch-admin.php",
+                        type: "POST"
+                    }
+                });
+            }; 
     </script>
 </body>
 </html>

@@ -75,6 +75,7 @@ session_start();
         $(document).ready(function() {
             fetch_data();
 
+            // table creation from db
             function fetch_data() {
                 var dataTable = $('#artist-table').DataTable({
                     "processing": true,
@@ -87,8 +88,8 @@ session_start();
                     }
                 });
             }; 
-            //--------------- FILTER---------------//
 
+            // link click to go to profile
             $('#artist-table').on('click', '#profile-name', function() {
                 var id = $(this).parent('div').data('id');
                 var name = $(this).text();
@@ -96,6 +97,7 @@ session_start();
                 toProfile(id, name);
             })
 
+            // ajax call to redirect to profile
             function toProfile(id, name) {
                 $.ajax({
                     url: 'include/to-artist-profile.php',
