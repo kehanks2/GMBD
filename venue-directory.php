@@ -42,7 +42,7 @@ session_start();
         <!-- filters -->
             <div clas="row">
                 <div class="col-sm-3">
-                    <input type=""
+                    <input type="">
                 </div>
             </div>
             <!-- venue table -->
