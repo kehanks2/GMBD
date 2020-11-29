@@ -116,17 +116,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								if ($error_login) { ?>
 									<div class="alert alert-warning">The Username and Password combination you entered is incorrect.</div>
 									<?php $error_login = false;
-								} elseif ($error_inactive) { ?>
-									<div class="alert alert-danger"><strong>Your account is inactive.</strong> Contact the administrator to reactivate your account.			
-							</div>
-								
-											<p><a href="mailto:admin@financetitan.great-site.net">email system admin</a></p>
-									<?php $error_inactive = false;
 								}
 							?>
-							<div class="bottom-links">
-								<p><a href="forgot-password.php" data-toggle="tooltip" data-placement="bottom" title="Click to change your password">Forgot your password?</a></p>
-							</div>
 						</div>
 					</div>
 				</div>
