@@ -37,7 +37,7 @@
                         <?php echo $country; ?>
                     </select>
                     </div>
-                <div class="form-group" align="center">
+                <div class="form-group" style="text-align:center;">
                     <button type="button" name="filter" id="filter" class="btn btn-info">Filter</button>
                 </div>
             </div>
