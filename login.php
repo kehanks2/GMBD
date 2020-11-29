@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
 		    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
 	</head>
 	
 <body>
@@ -129,7 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/popper.min.js"></script>
-<script src="js/bootstrap-4.4.1.js"></script>	
+<script src="js/bootstrap.js"></script>	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript">
 		$(function () {

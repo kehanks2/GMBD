@@ -19,7 +19,7 @@ session_start();
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
 		    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
 	</head>
 
     <body>
@@ -33,7 +33,8 @@ session_start();
 <!-- PAGE CONTENT -->
 <div class="container-fluid">	
 	<div class="row justify-content-center">
-		<div class="col-md-6">            
+		<div class="col-md-6">    
+            <div id="alert-message"></div>        
             <form class="register-form" method="POST" action="">
                 <div class="form-group">
                     <input type="text" class="form-control" name="fname" id="fname" required="required" placeholder="Enter your first name">
@@ -62,7 +63,7 @@ session_start();
                     <input type="text" class="form-control" name="pname" id="pname" required="required" placeholder="Enter your professional name or business name">
                 </div>               
                 <div class="text-center">
-                    <input type="submit" id="submit-btn" name="submit" class="btn btn-lg btn-primary" value="CREATE ACCOUNT" data-toggle="tooltip" data-placement="bottom" title="Click to register a new account">
+                    <button type="button" id="submit-btn" name="submit" class="btn btn-lg btn-primary" data-toggle="tooltip" title="Click to register a new account">Create Account</button>
                 </div>
             </form>	  
 		</div>
@@ -71,7 +72,7 @@ session_start();
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/popper.min.js"></script>
-<script src="js/bootstrap-4.4.1.js"></script>	
+<script src="js/bootstrap.js"></script>	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript">
 		$(function () {
@@ -80,17 +81,47 @@ session_start();
 	</script>
     <script type="text/javascript">
         $(document).ready(function() {
+
             $('#submit-btn').click( function () {
-                var data = $('#register-form').serialize();
+                var fname = $('#fname').val();
+                var lname = $('#lname').val();
+                var username = $('#username').val();
+                var password = $('#password').val();
+                var email = $('#email').val();
+                var profession = $('#profession').val();
+                var pname = $('#pname').val();
                 $.ajax({
                     url: 'include/register.php',
                     type: 'POST',
                     dataType: 'JSON',
-                    data: { data }, 
-                    success: function(data) {                    
+                    data: {
+                        fname: fname,
+                        lname: lname,
+                        username: username,
+                        password: password,
+                        email: email,
+                        profession: profession,
+                        pname: pname
+                    }, 
+                    success: function(data) {  
+                        getAlert(data);
                     }
                 })
             })
+
+            function getAlert(data) {
+                if (data == 0) {
+                    $('#alert-message').html('<div class="alert alert-success">You have successfully registered your account!</div>');
+                } else if (data == 1) {
+                    $('#alert-message').html('<div class="alert alert-warning">Username already exists. Try again.</div>');
+                } else if (data == 2) {
+                    $('#alert-message').html('<div class="alert alert-warning">Professional or Business name already exists. Try again.</div>');
+                } else if (data == 3) {
+                    $('#alert-message').html('<div class="alert alert-danger">Database error. Try again later.</div>');
+                } else if (data == 4) {
+                    $('#alert-message').html('<div class="alert alert-danger">Database error. Try again later.</div>');
+                }
+            }
         })
 
     </script>
