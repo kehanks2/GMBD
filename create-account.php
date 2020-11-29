@@ -36,6 +36,12 @@ session_start();
 		<div class="col-md-6">            
             <form class="register-form" method="POST" action="">
                 <div class="form-group">
+                    <input type="text" class="form-control" name="fname" id="fname" required="required" placeholder="Enter your first name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="lname" id="lname" required="required" placeholder="Enter your last name">
+                </div>
+                <div class="form-group">
                     <input type="text" class="form-control" name="username" id="username" required="required" placeholder="Enter your username">
                 </div>
                 <div class="form-group">
@@ -52,6 +58,9 @@ session_start();
                         <option id="venue-profession">Venue</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="pname" id="pname" required="required" placeholder="Enter your professional name or business name">
+                </div>               
                 <div class="text-center">
                     <input type="submit" id="submit-btn" name="submit" class="btn btn-lg btn-primary" value="CREATE ACCOUNT" data-toggle="tooltip" data-placement="bottom" title="Click to register a new account">
                 </div>
