@@ -11,8 +11,8 @@ $query = "SELECT * FROM Venue WHERE (Status = 1) ";
 
 // filters
 if(isset($_POST['min'], $_POST['max']) && $_POST['min'] != '' && $_POST['max'] != '') {
-    $min = mysqli_real_escape_string($db, $$_POST['min']);
-    $max = mysqli_real_escape_string($db, $$_POST['max']);
+    $min = mysqli_real_escape_string($db, $_POST['min']);
+    $max = mysqli_real_escape_string($db, $_POST['max']);
     $query .= "AND (Capacity >= '$min' AND Capacity <= '$max') ";
 }
 

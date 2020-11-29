@@ -87,6 +87,7 @@ session_start();
             </div>
         </div>
 
+        <?php include('include/footer.php'); ?>
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
@@ -99,33 +100,13 @@ session_start();
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
 
-        /* $.fn.dataTable.ext.search.push(
-            function( settings, data, dataIndex ) {
-                var min = parseInt( $('#min').val(), 10 );
-                var max = parseInt( $('#max').val(), 10 );
-                var capacity = parseFloat( data[3] ) || 0; // use data for the capacity column
-        
-                if ( ( isNaN( min ) && isNaN( max ) ) ||
-                    ( isNaN( min ) && capacity <= max ) ||
-                    ( min <= capacity   && isNaN( max ) ) ||
-                    ( min <= capacity   && capacity <= max ) )
-                {
-                    return true;
-                }
-                return false;
-            }
-        ); */
-
         $(document).ready(function() {
-            var filters = Array('', '');
+            // filter variables
+            var min = '';
+            var max = '';
+
             fetch_data();
-            function fetch_data() {
-                var min = '';
-                var max = '';
-                if (filters[0] != '') {
-                    min = filters[0];
-                    max = filters[1]; 
-                }
+            function fetch_data() {                
                 var dataTable = $('#venue-table').DataTable({
                     "processing": true,
                     "serverSide": true,
@@ -139,11 +120,9 @@ session_start();
                         }
                     }
                 });
-                $('#min, #max').keyup( function() {
-                    table.draw();
-                } );
             };
 
+            // send to profile
             function toProfile(id, name) {
                 $.ajax({
                     url: 'include/to-venue-profile.php',
@@ -164,28 +143,27 @@ session_start();
             // filters
             $('#apply-filters').click(function () {
                 if ($('#minCapacity').val()) {
-					filters.push($('#minCapacity').val());
+					min = $('#minCapacity').val();
 					if ($('#maxCapacity').val()) {
-						filters.push($('#maxCapacity').val());
+						max = $('#maxCapacity').val();
 					} else {
-						filters.push(999999);
+						max = 999999;
 					}
 				} else {
-					filters.push('0');
+                    min = 0;
 					if ($('#maxCapacity').val()) {
-						filters.push($('#maxCapacity').val());
+						max = $('#maxCapacity').val();
 					} else {
-						filters.push(999999);
+						max = 999999;
 					}
-				}               
-                $('#venue-table').DataTable.reload();
+				}
+                
+                $('#venue-table').DataTable().destroy();
+                fetch_data();
             });
             
         });
 
-    </script>
-
-    <?php include('include/footer.php'); ?>
-    
+    </script>    
     </body>
 </html>

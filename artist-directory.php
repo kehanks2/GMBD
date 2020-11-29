@@ -28,24 +28,35 @@ session_start();
         </div>
 
         <div class="container" style="padding-top:30px">
-
-        
+            <!-- filters -->
+            <div id="filters" role="tablist">
+                <div class="card">
+                    <div class="card-header" role="tab" id="filters-head">
+                        <h5 style="margin-bottom:0;"><a href="#filters-collapse" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="filters-collapse">
+                            Filters
+                        </a></h5>
+                    </div>
+                    <div id="filters-collapse" class="collapse" role="tabpanel" aria-labelledby="filters-head" data-parent="#filters">
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- genre filter -->
+                                <div class="col-auto form-inline">
+                                    <label for="genre" class="col-form-label"><strong>Genre:</strong></label>
+                                    <select id="genre" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary btn-width" id="apply-filters">
+                                    Apply
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
             <!-- artist table -->
             <div class="row">
                 <div class="col-sm-12">
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                    <select name="filter_genre" id="filter_genre" class="form-control" required>
-                        <option value="">Select Genre</option>
-                        <?php echo $country; ?>
-                    </select>
-                    </div>
-                <div class="form-group" style="text-align:center;">
-                    <button type="button" name="filter" id="filter" class="btn btn-info">Filter</button>
-                </div>
-            </div>
-
                     <table id="artist-table" class="table table-striped" style="width:100%;">
                         <thead>
                             <tr>
