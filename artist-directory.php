@@ -40,11 +40,33 @@ session_start();
                         <div class="card-body">
                             <div class="row">
                                 <!-- genre filter -->
-                                <div class="col-auto form-inline">
-                                    <label for="genre" class="col-form-label"><strong>Genre:</strong></label>
-                                    <select id="genre" class="form-control">
+                                <div class="form-group" id="choose-genre">
+                                    <label for="choose-genre"><strong>Genre</strong></label>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="rock" id="rock" name="choose-genre" class="form-check"><label for="rock">Rock</label>
+                                    </div>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="pop" id="pop" name="choose-genre" class="form-check"><label for="pop">Pop</label>
+                                    </div>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="hip-hop" id="hip-hop" name="choose-genre" class="form-check"><label for="hip-hop">Hip Hop</label>
+                                    </div>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="rap" id="rap" name="choose-genre" class="form-check"><label for="rap">Rap</label>
+                                    </div>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="country" id="country" name="choose-genre" class="form-check"><label for="country">Country</label>
+                                    </div>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="folk" id="folk" name="choose-genre" class="form-check"><label for="folk">Folk</label>
+                                    </div>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="r&b" id="r-b" name="choose-genre" class="form-check"><label for="r-b">R&B</label>
+                                    </div>
+                                    <div class="form-inline">
+                                        <input type="checkbox" value="electronic" id="electronic" name="choose-genre" class="form-check"><label for="electronic">Electronic</label>
+                                    </div>
                                 </div>
-                            </div>
                             <div class="row">
                                 <button type="button" class="btn btn-primary btn-width" id="apply-filters">
                                     Apply
@@ -84,6 +106,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            var filters = Array();
             fetch_data();
 
             // table creation from db
@@ -95,7 +118,17 @@ session_start();
                     "order": [],
                     "ajax": {
                         url: "include/fetch-artist.php",
-                        type: "POST"
+                        type: "POST",
+                        data: {
+                            genre0: filters[0],
+                            genre1: filters[1],
+                            genre2: filters[2],
+                            genre3: filters[3],
+                            genre4: filters[4],
+                            genre5: filters[5],
+                            genre6: filters[6],
+                            genre7: filters[7]
+                        }
                     }
                 });
             }; 
@@ -125,6 +158,21 @@ session_start();
                     }
                 })
             }
+
+            // filters
+            $('#apply-filters').click(function () {
+                //type filters
+				$.each($('input[name="choose-genre"'), function() {
+					if ($(this).is(':checked')) {
+						filters.push($(this).text());
+					} else {
+						filters.push(0);
+					}
+				});
+                
+                $('#artist-table').DataTable().destroy();
+                fetch_data();
+            });
             
         });
 

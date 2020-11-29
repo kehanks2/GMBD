@@ -122,6 +122,14 @@ session_start();
                 });
             };
 
+            // link click to go to profile
+            $('#venue-table').on('click', '#profile-name', function() {
+                var id = $(this).parent('div').data('id');
+                var name = $(this).text();
+
+                toProfile(id, name);
+            })
+
             // send to profile
             function toProfile(id, name) {
                 $.ajax({
