@@ -73,8 +73,7 @@
                     type: 'POST',
                     dataType: 'JSON',
                     data: { data }, 
-                    success: function(data) {
-                        
+                    success: function(data) {                    
                     }
                 })
             })
