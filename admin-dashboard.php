@@ -71,7 +71,9 @@ if ($_SESSION['user_type'] != 'Admin') {
                         type: "POST"
                     }
                 });
-            }; 
+            };
+        });     
     </script>
+    <?php include('include/footer.php'); ?>
 </body>
 </html>

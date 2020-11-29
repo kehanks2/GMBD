@@ -136,5 +136,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   			$('[data-toggle="tooltip"]').tooltip();
 		})
 	</script>
+	
+	<?php include('include/footer.php'); ?>
 </body>
 </html>
