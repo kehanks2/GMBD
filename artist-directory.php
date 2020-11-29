@@ -1,4 +1,7 @@
+
 <!DOCTYPE html>
+
+
 <html lang='en'>
     <head>
         <meta charset="utf-8">
@@ -22,9 +25,23 @@
 
         <div class="container" style="padding-top:30px">
 
+        
             <!-- artist table -->
             <div class="row">
                 <div class="col-sm-12">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <select name="filter_genre" id="filter_genre" class="form-control" required>
+                        <option value="">Select Genre</option>
+                        <?php echo $country; ?>
+                    </select>
+                    </div>
+                <div class="form-group" align="center">
+                    <button type="button" name="filter" id="filter" class="btn btn-info">Filter</button>
+                </div>
+            </div>
+
                     <table id="artist-table" class="table table-striped" style="width:100%;">
                         <thead>
                             <tr>
@@ -65,7 +82,8 @@
                         type: "POST"
                     }
                 });
-            };            
+            }; 
+            //--------------- FILTER---------------//
 
             $('#artist-table').on('click', '#profile-name', function() {
                 var id = $(this).parent('div').data('id');

@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+
+
+<?php
+//--------------- FILTER---------------//
+//include('config.php');
+
+//$capacity = '';
+//$query = "SELECT DISTINCT Capacity FROM Venue ORDER BY Capacity ASC";
+//$statement = $connect->prepare($query);
+//$statement->execute();
+//$result = $statement->fetchAll();
+//foreach($result as $row)
+//{
+// $capacity .= '<option value="'.$row['Capacity'].'">'.$row['Capacity'].'</option>';
+//}
+
+?>
+
 <html lang='en'>
     <head>
         <meta charset="utf-8">
@@ -24,6 +42,18 @@
             <!-- venue table -->
             <div class="row">
                 <div class="col-sm-12">
+
+                    <table border="0" cellspacing="5" cellpadding="5">
+                        <tbody><tr>
+                            <td>Minimum Capacity:</td>
+                            <td><input type="text" id="min" name="min"></td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Capacity:</td>
+                            <td><input type="text" id="max" name="max"></td>
+                        </tr>
+                    </tbody></table>
+
                     <table id="venue-table" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
@@ -40,13 +70,36 @@
             </div>
         </div>
 
+        
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
+
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = parseInt( $('#min').val(), 10 );
+        var max = parseInt( $('#max').val(), 10 );
+        var capacity = parseFloat( data[3] ) || 0; // use data for the capacity column
+ 
+        if ( ( isNaN( min ) && isNaN( max ) ) ||
+             ( isNaN( min ) && capacity <= max ) ||
+             ( min <= capacity   && isNaN( max ) ) ||
+             ( min <= capacity   && capacity <= max ) )
+        {
+            return true;
+        }
+        return false;
+    }
+);
+
+
         $(document).ready(function() {
             fetch_data();
 
@@ -60,14 +113,11 @@
                         type: "POST"
                     }
                 });
+                $('#min, #max').keyup( function() {
+                    table.draw();
+                } );
             };
-
-            $('#venue-table').on('click', '#profile-name', function() {
-                var id = $(this).parent('div').data('id');
-                var name = $(this).text();
-
-                toProfile(id, name);
-            })
+//--------------- FILTER---------------//
 
             function toProfile(id, name) {
                 $.ajax({
@@ -85,10 +135,12 @@
                     }
                 })
             }
+            
         });
 
     </script>
 
     <?php include('include/footer.php'); ?>
+    
     </body>
 </html>

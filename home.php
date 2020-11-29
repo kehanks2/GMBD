@@ -18,31 +18,12 @@
 <body>
     <?php include('include/navbar.php'); ?>
 
-                <div class="section-top">
-                    <div class="conent">
-                    </div>
-                    <div class="centered">
-                            <button type="button" class="btn btn-secondary" style="border: 2px solid white; padding-bottom:1% ">Login</button>
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="border: 2px solid white" >
-                                <label class="btn btn-secondary active">
-                                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Music
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option2" autocomplete="off"> Artist
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option3" autocomplete="off"> Venue
-                                </label>
-                            </div>
-                    </div>
-                </div>
-
 
         <div id="SLIDE_BG">
             <div class="home_content text-center"  >
                                 <div class="home_subtitle" style="padding-top: 10%"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">A directory for everything music in Georgia</h2></div>
                                 <div class="home_title" style="padding-top: 10px"><h1 style="font-size:120px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black; color: white;">Georgia Music Business Directory</h1></div>
-                                <div class="home_link" style="padding-bottom: 20%"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2></div>
+                                <div class="home_link" style="padding-bottom: 18%"><h2 style=" -webkit-text-stroke-width: .5px; -webkit-text-stroke-color: black; color: white;">Artist Directory, Music industry Directory, Venue Directory, and Upcoming Events</h2></div>
             </div>
         </div>
 

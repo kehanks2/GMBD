@@ -9,6 +9,15 @@ $columns = array('VenueName', 'Capacity', 'PhoneNumber', 'Email', 'City', 'State
 
 $query = "SELECT * FROM Venue WHERE (Status = 1) ";
 
+//--------------- FILTER---------------//
+if(isset($_POST['filter_capacity']) && $_POST['filter_capacity'] != '')
+{
+ $query .= '
+ WHERE Capacity = "'.$_POST['filter_capacity'].'" 
+ ';
+}
+
+
 if(isset($_POST["search"]["value"])) {
     $query .= ' 
         AND (VenueName LIKE "%'.$_POST["search"]["value"].'%"
