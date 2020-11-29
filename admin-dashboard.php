@@ -31,7 +31,6 @@ if ($_SESSION['user_type'] != 'Admin') {
         </div>
 
         <div class="container" style="padding-top:30px">
-
             <!-- select usertype -->
             <div class="row form-inline">		
                 <div class="form-group">
@@ -48,6 +47,7 @@ if ($_SESSION['user_type'] != 'Admin') {
                     </button>
                 </div>
             </div>
+            <!-- usertype tables -->
             <div class="row">
                 <div class="col-sm-12">              
                     <div hidden id="show-artist-table">
@@ -157,8 +157,68 @@ if ($_SESSION['user_type'] != 'Admin') {
                 } else {
                     return;
                 }
-			});
+            });
+            
+            // artist approved
+            $('#artist-table').on('click', '#approve', function () {
+                updateStatus('Artist', 1);
+            })
 
+            // artist pending
+            $('#artist-table').on('click', '#pending', function () {
+                updateStatus('Artist', 0);
+            })
+
+            // artist denied
+            $('#artist-table').on('click', '#deny', function () {
+                updateStatus('Artist', 2);
+            })
+            
+            // business approved
+            $('#business-table').on('click', '#approve', function () {
+                updateStatus('Business', 1);
+            })
+
+            // business pending
+            $('#business-table').on('click', '#pending', function () {
+                updateStatus('Business', 0);
+            })
+
+            // business denied
+            $('#business-table').on('click', '#deny', function () {
+                updateStatus('Business', 2);
+            })
+            
+            // venue approved
+            $('#venue-table').on('click', '#approve', function () {
+                updateStatus('Venue', 1);
+            })
+
+            // venue pending
+            $('#venue-table').on('click', '#pending', function () {
+                updateStatus('Venue', 0);
+            })
+
+            // venue denied
+            $('#venue-table').on('click', '#deny', function () {
+                updateStatus('Venue', 2);
+            })
+
+            function updateStatus(table, status) {
+                var id = $(this).parents('tr').find('td').find('div').data("id");
+                $.ajax ({
+                    url: 'include/update-status.php',
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        table: table,
+                        status: status,
+                        id: id
+                    }, success: function(data) {
+                        location.reload();
+                    }
+                })
+            }
         })
     </script>
 </body>
