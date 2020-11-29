@@ -67,14 +67,13 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#submit-btn').click( function () {
+                var data = $('#register-form').serialize();
                 $.ajax({
                     url: 'include/register.php',
                     type: 'POST',
                     dataType: 'JSON',
-                    data: {
-                        $('#register-form').serialize()
-                    }, success: function(data) {
-                        
+                    data: { data }, 
+                    success: function(data) {                    
                     }
                 })
             })

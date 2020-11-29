@@ -97,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div id="home-accordion" role="tablist">
 				<div class="card">			
 					<div class="card-header" role="tab" id="login-heading">
-						<h2 class="mb-0 text-center"> <a id="login-accordian" data-toggle="collapse" href="#login-collapse" role="button" aria-expanded="true" aria-controls="login-collapse">Sign In</a></h2>
+						<h2 class="mb-0 text-center"> <a id="login-accordion" data-toggle="collapse" href="#login-collapse" role="button" aria-expanded="true" aria-controls="login-collapse">Sign In</a></h2>
 					</div>
 					<div id="login-collapse" class="collapse show" role="tabpanel" aria-labelledby="login-heading" data-parent="#home-accordion">
 			      		<div class="card-body">
@@ -116,23 +116,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								if ($error_login) { ?>
 									<div class="alert alert-warning">The Username and Password combination you entered is incorrect.</div>
 									<?php $error_login = false;
-								} elseif ($error_inactive) { ?>
-									<div class="alert alert-danger"><strong>Your account is inactive.</strong> Contact the administrator to reactivate your account.			
-							</div>
-								
-											<p><a href="mailto:admin@financetitan.great-site.net">email system admin</a></p>
-									<?php $error_inactive = false;
 								}
 							?>
-							<div class="bottom-links">
-								<p><a href="forgot-password.php" data-toggle="tooltip" data-placement="bottom" title="Click to change your password">Forgot your password?</a></p>
-							</div>
 						</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card-header" role="tab" id="create-account-heading">
-						<h2 class="mb-0 text-center"> <a id="login-accordian" href="#create-account-collapse" role="button" data-toggle="collapse" expanded="false" aria-controls="create-account-collapse">New? Sign up for an account</a></h2>
+						<h2 class="mb-0 text-center"> <a id="create-account-accordion" href="#create-account-collapse" role="button" data-toggle="collapse" expanded="false" aria-controls="create-account-collapse">New? Sign up for an account</a></h2>
 					</div>
 					<div id="create-account-collapse" class="collapse" role="tabpanel" aria-labelledby="create-account-heading" data-parent="#home-accordion">
 			      		<div class="card-body text-center">
