@@ -1,3 +1,19 @@
+To Run
+-------
+The code is ran on the virtual machine given by Kennesaw State University; VMware Horizon Client.
+
+To login use:
+Username – GGteam1@win.kennesaw.edu
+
+Password – admin@GGteam1
+
+Then you can run XAMPP if it is not already running from the pinned application on the home bar. Then clicling start Apache and MySQL.
+
+Now you can go to a browser and search : localhost:8080 and the website will pull up.
+
+-------------------------
+
+
 This is the project folder.
 
 I have everything set up in VS Code including git,
