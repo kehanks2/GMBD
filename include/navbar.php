@@ -109,7 +109,7 @@ if (!isset($_SESSION['login_user'])) {
 
 <?php 
 // navbar for other users
-} else if ($_SESSION['user_type'] == "Business" || $_SESSION['user_type'] == "Venue") {
+} else if ($_SESSION['user_type'] == "Business" || $_SESSION['user_type'] == "Venue" || $_SESSION['user_type'] == "Artist") {
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<img src="/img/LogoMakr-1k85PB.png" width="50" height="50">

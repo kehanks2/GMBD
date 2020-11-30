@@ -14,10 +14,8 @@ if (isset($_POST['genre0'], $_POST['genre1'], $_POST['genre2'], $_POST['genre3']
         $_POST['genre6'], $_POST['genre7']) &&
         $_POST['genre0'] != '' && $_POST['genre1'] != '' && $_POST['genre2'] != '' && $_POST['genre3'] != '' && 
         $_POST['genre4'] != '' && $_POST['genre5'] != '' && $_POST['genre6'] != '' && $_POST['genre7'] != '') {
-            if (($_POST['genre0'] == 0 && $_POST['genre1'] == 0 && $_POST['genre2'] == 0 && $_POST['genre3'] == 0 && 
-            $_POST['genre4'] == 0 && $_POST['genre5'] == 0 && $_POST['genre6'] == 0 && $_POST['genre7'] == 0)) {
-                
-            } else {
+            if (!($_POST['genre0'] == "0" && $_POST['genre1'] == "0" && $_POST['genre2'] == "0" && $_POST['genre3'] == "0" && 
+            $_POST['genre4'] == "0" && $_POST['genre5'] == "0" && $_POST['genre6'] == "0" && $_POST['genre7'] == "0")) {                
                 $genre = array($_POST['genre0'], $_POST['genre1'], $_POST['genre2'], $_POST['genre3'], $_POST['genre4'], $_POST['genre5'], $_POST['genre6'], $_POST['genre7']);
                 $c = 0;
                 for ($i = 0; $i < count($genre); $i++) {
@@ -32,7 +30,7 @@ if (isset($_POST['genre0'], $_POST['genre1'], $_POST['genre2'], $_POST['genre3']
                     }
                 }
                 $query .= ")";
-            }    
+            } 
 }
 
 if(isset($_POST["search"]["value"])) {
