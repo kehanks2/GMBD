@@ -36,8 +36,8 @@ session_start();
                                 <th data-toggle="tooltip" title="Sort by name">Business Name</th>
                                 <th data-toggle="tooltip" title="Sort by category">Category</th>
                                 <th data-toggle="tooltip" title="Sort by subcategory">Subcategory</th>
-                                <th data-toggle="tooltip" title="Sort by location">Location</th>
-                                <th data-toggle="tooltip" title="Sort by phone number">Phone Number</th>
+                                <th data-toggle="tooltip" title="Sort by location">City</th>
+                                <th data-toggle="tooltip" title="Sort by state">State</th>
                             </tr>
                         </thead>
                     </table>
@@ -70,7 +70,7 @@ session_start();
 
             
 
-            $('#venue-table').on('click', '#profile-name', function() {
+            $('#business-table').on('click', '#profile-name', function() {
                 var id = $(this).parent('div').data('id');
                 var name = $(this).text();
 
@@ -79,14 +79,17 @@ session_start();
 
             function toProfile(id, name) {
                 $.ajax({
-                    url: 'include/to-profile.php',
+                    url: 'include/to-business-profile.php',
                     method: 'POST',
-                    dataType: 'JSON',
                     data: {
                         id: id,
                         name: name
                     }, success: function(data) {
-                        window.location('profile.php');
+                        if (data != 'error') {
+                            window.location.assign(data);
+                        } else {
+                            alert("error");
+                        }
                     }
                 })
             }
